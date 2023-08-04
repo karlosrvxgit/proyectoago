@@ -5,7 +5,7 @@ import Search from "./Search";
 import moment from "moment-timezone";
 
 import axios from "axios";
-// import IndexPage from "./pages";
+import IndexPage from "./pages";
 import "./WeatherCard.css";
 
 export default function NavBar() {
@@ -21,7 +21,7 @@ export default function NavBar() {
   const CURRENTAPI = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${KEY}&units=metric`;
   const FORECASTAPI = `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&appid=${KEY}&units=metric`;
 
-  const [locaTion, setLocation] = useState(false);
+//   const [locaTion, setLocation] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -51,45 +51,7 @@ export default function NavBar() {
     setLocation(!locaTion);
   }
 
-  //images and time
-  const handleClick = () => {
-    if (name !== "") {
-      // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=ea8d1197afcdcf7db5d10fa7a763caaf&&units=metric`;
-      axios.get(data);
-      console
-        .log(data)
-        .then((res) => {
-          let imagePath = "";
-          if (res.data.weather[0].main == "Clouds") {
-            imagePath = "./clouds2.png";
-          } else if (res.data.weather[0].main == "Clear") {
-            imagePath = "./clear2.png";
-          } else if (res.data.weather[0].main == "Rain") {
-            imagePath = "./rain2.png";
-          } else if (res.data.weather[0].main == "Drizzle") {
-            imagePath = "./rayo2.png";
-          } else if (res.data.weather[0].main == "Mist") {
-            imagePath = "./shower2.png";
-          } else {
-            imagePath = "./cloud2.png";
-          }
-          console.log(res.data);
-
-          setData({
-            ...data,
-            celcius: res.data.main.temp,
-            name: res.data.name,
-            humidity: res.data.main.humidity,
-            speed: res.data.wind.speed,
-            image: imagePath,
-          });
-        })
-        .catch((err) => console.log(err));
-    }
-  };
-
-  // return (
-
+  
   return (
     <main id="container">
       <section id="currentWeather">
